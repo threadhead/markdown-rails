@@ -29,7 +29,7 @@ end
 MarkdownRails.configure do |config|
   config.render do |markdown_source|
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
-    markdown.render(markdown_source)
+    markdown.render(markdown_source).html_safe
   end
 end
 
