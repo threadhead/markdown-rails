@@ -28,9 +28,8 @@ end
 
 MarkdownRails.configure do |config|
   config.render do |markdown_source|
-    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
-    puts ">>>>>>>>>>>>>>>>>> red_render: 1"
-    markdown.render(markdown_source).html_safe
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true, :fenced_code_blocks => true, :no_intra_emphasis => true, :lax_html_blocks => true)
+    markdown.render(markdown_source)
   end
 end
 
