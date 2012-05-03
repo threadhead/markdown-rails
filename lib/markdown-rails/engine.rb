@@ -1,4 +1,4 @@
-require 'rdiscount'
+require 'redcarpet'
 require 'action_view'
 
 # We cannot use Markdown::Rails because it conflicts with RDiscount's Markdown class
@@ -28,7 +28,8 @@ end
 
 MarkdownRails.configure do |config|
   config.render do |markdown_source|
-    RDiscount.new(markdown_source).to_html
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true, :fenced_code_blocks => true)
+    markdown.render(markdown_source)
   end
 end
 
